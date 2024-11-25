@@ -10,8 +10,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vscode-picture-frame.helloWorld"
-  ],
+  "onCommand:vscode-picture-frame.helloWorld",
+  "onView:screensaverView"
+],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [

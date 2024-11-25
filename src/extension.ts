@@ -50,51 +50,35 @@ class ScreensaverViewProvider implements vscode.WebviewViewProvider {
 	}
   
 	private getHtmlForWebview(): string {
-	  return `
-		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-		  <meta charset="UTF-8">
-		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		  <title>Screensaver</title>
-		  <style>
-			body {
-			  margin: 0;
-			  background-color: black;
-			  display: flex;
-			  justify-content: center;
-			  align-items: center;
-			  height: 100vh;
-			}
-			canvas {
-			  display: block;
-			}
-		  </style>
-		</head>
-		<body>
-		  <canvas id="screensaver"></canvas>
-		  <script>
-			const canvas = document.getElementById('screensaver');
-			const ctx = canvas.getContext('2d');
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-  
-			function drawCircle() {
-			  ctx.clearRect(0, 0, canvas.width, canvas.height);
-			  const x = Math.random() * canvas.width;
-			  const y = Math.random() * canvas.height;
-			  const radius = Math.random() * 50;
-			  ctx.beginPath();
-			  ctx.arc(x, y, radius, 0, Math.PI * 2);
-			  ctx.fillStyle = \`hsl(\${Math.random() * 360}, 100%, 50%)\`;
-			  ctx.fill();
-			  requestAnimationFrame(drawCircle);
-			}
-  
-			drawCircle();
-		  </script>
-		</body>
-		</html>
-	  `;
-	}
-  }
+		const imageUri = vscode.Uri.joinPath(this.extensionUri, 'media', 'picture.jpg');
+		return `
+		  <!DOCTYPE html>
+		  <html lang="en">
+		  <head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Picture Frame</title>
+			<style>
+			  body {
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				background-color: #2e3440;
+			  }
+			  img {
+				max-width: 100%;
+				max-height: 100%;
+				border: 5px solid #88c0d0;
+				border-radius: 10px;
+			  }
+			</style>
+		  </head>
+		  <body>
+			<img src="${imageUri}" alt="Picture Frame" />
+		  </body>
+		  </html>
+		`;
+	  }
+}	  
