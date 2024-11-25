@@ -12,13 +12,24 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
+  "viewsContainers": {
+    "activitybar": [
       {
-        "command": "vscode-picture-frame.helloWorld",
-        "title": "Hello World"
+        "id": "screensaverSidebar",
+        "title": "Screensaver",
+        "icon": "media/icon.svg" 
       }
     ]
   },
+  "views": {
+    "screensaverSidebar": [
+      {
+        "id": "screensaverView",
+        "name": "Screensaver"
+      }
+    ]
+  }
+},
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
