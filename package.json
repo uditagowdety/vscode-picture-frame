@@ -9,27 +9,35 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:vscode-picture-frame.helloWorld"
+  ],
   "main": "./out/extension.js",
   "contributes": {
-  "viewsContainers": {
-    "activitybar": [
+    "commands": [
       {
-        "id": "screensaverSidebar",
-        "title": "Screensaver",
-        "icon": "media/icon.svg" 
+        "command": "vscode-picture-frame.helloWorld",
+        "title": "Hello World"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "screensaverSidebar",
+          "title": "Screensaver",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "screensaverSidebar": [
+        {
+          "id": "screensaverView",
+          "name": "Screensaver"
+        }
+      ]
+    }
   },
-  "views": {
-    "screensaverSidebar": [
-      {
-        "id": "screensaverView",
-        "name": "Screensaver"
-      }
-    ]
-  }
-},
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
