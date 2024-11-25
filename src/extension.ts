@@ -50,7 +50,11 @@ class ScreensaverViewProvider implements vscode.WebviewViewProvider {
 	}
   
 	private getHtmlForWebview(): string {
-		const imageUri = vscode.Uri.joinPath(this.extensionUri, 'media', 'picture.jpg');
+		// Generate the URI for the image file in the media folder
+		const imageUri = vscode.Uri.joinPath(this.extensionUri, 'media', 'picture.jpg').with({
+		  scheme: 'vscode-resource',
+		});
+	  
 		return `
 		  <!DOCTYPE html>
 		  <html lang="en">
@@ -80,5 +84,5 @@ class ScreensaverViewProvider implements vscode.WebviewViewProvider {
 		  </body>
 		  </html>
 		`;
-	  }
+	}	  
 }	  
